@@ -1,0 +1,64 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #acacac;
+    text-align: center;
+}
+.game_title {
+    margin: 20px 0 40px 0;
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: green;
+    transform: rotate(6deg);
+}
+
+.field {
+    margin: auto;
+    width: 700px;
+    height: 500px;
+    background: #101010;
+    text-align: right;
+}
+
+.snake {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background:lightgreen;
+    border: 1px solid #000;
+}
+.snake_head {
+    background: orange;
+}
+
+.target {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: red;
+}
+.times {
+    margin-right: 20px;
+    color: #ffffff;
+}
+.reward {
+    margin-right: 20px;
+    color: #ffffff;
+}
+.parameters {
+    padding-top: 320px;
+    margin-right: 20px;
+    color: #ffffff;
+    opacity: .5;
+    font-size: .8rem;
+}
+
+.generate {
+    display: none;
+}
