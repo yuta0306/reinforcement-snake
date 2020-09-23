@@ -4,7 +4,6 @@ const TARGET = document.getElementsByClassName('target')[0];
 const START = document.getElementsByClassName('game_start')[0];
 const END = document.getElementsByClassName('game_end')[0];
 const RL = document.getElementsByClassName('rl')[0];
-// const GEN = document.getElementsByClassName('generate')[0];
 const DEMO = document.getElementsByClassName('demo')[0];
 let dl;
 const TIMES = document.getElementsByClassName('times')[0];
@@ -246,20 +245,9 @@ RL.addEventListener('click', e => {
         flag = setInterval(() => train(agent, 1000), 10);
     }
 })
-// GEN.addEventListener('click', e => {
-//     let blob = new Blob([JSON.stringify(agent.params)], {type: 'application/json'});
-//     let link = window.URL.createObjectURL(blob);
-//     dl = document.createElement("a");
-//     dl.href = link;
-//     dl.target = "_blank";
-//     dl.download = "snake-params.json";
-//     dl.innerText = "Download RL params";
-//     document.getElementById("download").appendChild(dl);
-// })
 DEMO.addEventListener('click', e => {
     if (!state) {
         END.value = 'Stop Demo';
-        // GEN.style.display = 'inline-block';
         initialize();
         set_target();
         state = true;

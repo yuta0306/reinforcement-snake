@@ -1,5 +1,7 @@
 # Snake Game
 
+![demo-image](./img/demo.png)
+
 This is *snake game*.
 
 This has simple rule.
