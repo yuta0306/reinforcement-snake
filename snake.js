@@ -73,12 +73,9 @@ class Agent {
     action = (keyaction) => {
         let movekey, proba;
         let params = this.params[this.env]
-        let total = 0;
         let kevent;
-        params.forEach(x => {
-            total += x;
-        });
-        proba = Math.random() * total;
+    
+        proba = Math.random();
         if (proba < params[0]) movekey = "ArrowLeft"
         else if ((params[0] <= proba) && (proba < params[0]+params[1]))
             movekey = "ArrowUp"
@@ -94,6 +91,7 @@ class Agent {
 
     observe = (agent_pos, target_pos, goal) => {
         let new_dist, contrib, move;
+        let total;
 
         new_dist = this.environ(agent_pos, target_pos);
         move = this.action(true);
@@ -116,7 +114,14 @@ class Agent {
         this.params[this.env][Math.floor(Math.random()*4)] -= contrib;
 
         for (let key of Object.keys(this.params)) {
-            this.params[key] = this.params[key].map(x => Math.abs(x));
+            total = 0;
+            this.params[key] = this.params[key].map(x => {
+                if (x < 1e-10) x = 1e-10;
+                total += x;
+
+                return x;
+            });
+            this.params[key] = this.params[key].map(x => x / total);
         }
 
         this.dist = new_dist;   
@@ -237,7 +242,6 @@ END.addEventListener('click', e => {
 RL.addEventListener('click', e => {
     if (!state) {
         END.value = 'Stop Learning';
-        // GEN.style.display = 'inline-block';
         agent = new Agent();
         initialize();
         set_target();
